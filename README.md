@@ -88,6 +88,8 @@ totalHitPoints(1, 2, 3, 4, 5, 6, 7);
 
 ## Destructuring
 
+**Object**
+
 ```js
 const user = {
     name: "John",
@@ -100,6 +102,30 @@ const age = user.age;
 
 // clean code
 const { name: userName, age: userAge } = user;
+```
+
+**Array**
+
+```js
+// dirty code
+const numbers = [1, 2, 3, 4, 5];
+
+const first = numbers[0];
+const second = numbers[1];
+const rest = numbers.slice(2);
+
+console.log(first); // 1
+console.log(second); // 2
+console.log(rest); // [3, 4, 5]
+
+// clean code
+const numbers = [1, 2, 3, 4, 5];
+
+const [first, second, ...rest] = numbers;
+
+console.log(first); // 1
+console.log(second); // 2
+console.log(rest); // [3, 4, 5]
 ```
 
 ### Function params
@@ -291,7 +317,9 @@ function processStatus(status) {
     return "OK";
 }
 ```
+
 **Clean code pagination**
+
 ```js
 const DEFAULT_PAGINATION_LIMIT = 10;
 const DEFAULT_CURRENT_PAGE = 1;

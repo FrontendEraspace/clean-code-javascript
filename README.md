@@ -216,18 +216,17 @@ Jika promise tidak saling bergantung satu sama lain bisa menggunakan Promise.all
 ```js
 const promise1 = Promise.resolve(3);
 const promise2 = new Promise((resolve, reject) =>
-  setTimeout(reject, 100, 'foo'),
+    setTimeout(reject, 100, "foo")
 );
 const promises = [promise1, promise2];
 
 Promise.allSettled(promises).then((results) =>
-  results.forEach((result) => console.log(result.status)),
+    results.forEach((result) => console.log(result.status))
 );
 
 // Expected output:
 // "fulfilled"
 // "rejected"
-
 ```
 
 ## Complex Conditional
@@ -254,4 +253,50 @@ function processOrder(order) {
         sendOrderConfirmation(order);
     }
 }
+```
+
+## Hardcoded Value
+
+**Dirty code**
+
+```js
+function processStatus(status) {
+    if (status === 1) {
+        // "1" tidak memiliki arti yang jelas
+        // process
+    } else {
+        // process
+    }
+}
+
+// hardcoded values pada pagination
+const page = 1;
+const limit = 10;
+const offset = (page - 1) * limit;
+```
+
+**Clean code**
+
+```js
+const Status = {
+    ACTIVE: 1,
+    INACTIVE: 0,
+};
+
+function processStatus(status) {
+    if (status === Status.INACTIVE) {
+        return "ERROR";
+    }
+    return "OK";
+}
+```
+**Clean code pagination**
+```js
+const DEFAULT_PAGINATION_LIMIT = 10;
+const DEFAULT_CURRENT_PAGE = 1;
+
+const page = queryParams.page ?? DEFAULT_CURRENT_PAGE;
+const limit = queryParams.limit ?? DEFAULT_PAGINATION_LIMIT;
+const PAGE_NUMBER_OFFSET = 1;
+const OFFSET = (page - PAGE_NUMBER_OFFSET) * limit;
 ```

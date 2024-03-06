@@ -1,6 +1,7 @@
 # clean-code-javascript
-
-clean-code-javascript
+related links:  
+- [Clean Code & Code Conventions Next.js](https://github.com/FrontendEraspace/clean-code-nextjs)
+- [ES Syntax](https://github.com/FrontendEraspace/es-2024-2023)
 
 ## template literals
 
